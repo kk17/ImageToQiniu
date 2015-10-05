@@ -1,0 +1,18 @@
+{
+    "name": "ImageToQiniu",
+    "version" : "1.0.0",
+    "manifest_version" : 2,
+    "background" : { "scripts": ["background.js"] },
+    "icons": 
+    { 
+        "16" : "icon.png",
+        "48": "icon-big.png",
+        "128": "icon-big.png"
+    }, 
+    "description": "Store your chrome tabs and can be reuse on next time",
+    "permissions": [
+        "contextMenus",
+        "http://*/*",
+        "https://*/*"
+    ]
+}

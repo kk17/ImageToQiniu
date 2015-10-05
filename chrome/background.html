@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传到七牛</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+    <style type="text/css">
+        .clearfix:after {
+            content: ' ';
+            display: block;
+            clear: both;
+            height: 0;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .container {
+            width: 400px;
+            padding-top: 35px;
+        }
+        .conf-table {
+            padding: 4px;
+        }
+        .conf-table {
+            table-layout: fixed;
+            text-align: left;
+        }
+        .token-panel {
+            margin-top: 10px;
+            padding: 10px;
+        }
+        #save_token, #submit {
+            margin-bottom: 5px;
+        }
+        #submit {
+            margin-top: 5px;
+        }
+        h3 {
+            margin: 0;
+        }
+        .pannel-file {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .panel-content {
+            margin-top: 5px;
+        }
+        .result-url {
+            padding-left: 0;
+        }
+        .filename-label {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px;
+            vertical-align: super;
+        }
+        .pre-name {
+            text-align: center;
+            font-size: 16px;
+        }
+        .loading {
+            display: inline-block;
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            margin-left: 10px;
+            background-image: url('loading.gif');
+        }
+        
+        .token-panel input {
+            display: none;
+            margin-top: 5px;
+        }
+        .token-value {
+            padding-top: 10px;
+            padding-left: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #accessKey, #secretKey, #spaceName {
+            width: 340px;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    
+    
+    <div class="container">
+
+        <div class="accordion" id="accordion2">
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle collapseOne" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                <h5>配置信息</h5>
+              </a>
+            </div>
+            <div id="collapseOne" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <div class="set-token clearfix">
+                    <div class="token-panel well">
+                        <span class="label label-success">accessKey:</span>
+                        <p class="token-value" id="accessKey_value"></p>
+                        <input class="token-input" type="text" id="accessKey" value="">
+                    </div>
+                    <div class="token-panel well">
+                        <span class="label label-success">secretKey:</span>
+                        <p class="token-value" id="secretKey_value"></p>
+                        <input class="token-input" type="text" id="secretKey" value="">
+                    </div>
+                    <div class="token-panel well">
+                        <span class="label label-success">空间名称:</span>
+                        <p class="token-value" id="spaceName_value"></p>
+                        <input class="token-input" type="text" id="spaceName" value="">
+                    </div>
+                    <div class="token-panel well">
+                        <span class="label label-success">域名:</span>
+                        <p class="token-value" id="domainName_value"></p>
+                        <input class="token-input" type="text" id="domainName_value" value="">
+                    </div>
+                    <div class="token-panel well">
+                        <span class="label label-success">服务器URL:</span>
+                        <p class="token-value" id="serverUrl_value"></p>
+                        <input class="token-input" type="text" id="serverUrl_value" value="">
+                    </div>
+                    <button class="btn btn-primary pull-right" id="save_token">保存</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle collapseTwo" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                <h5>Image信息</h5>
+              </a>
+            </div>
+            <div id="collapseTwo" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <div class="image-detail">
+                      <a href="#" class="thumbnail">
+                        <img class="image-info" />
+                      </a>
+                      <div class="panel-inner clearfix">
+                        <div class="pannel-file">
+                            <span class="label label-success filename-label">文件名:</span><input type="text" id="fileName"><div class="loading hidden"></div>
+                        </div>
+                        <div class="pre-name"></div>
+                        <button class="btn btn-primary pull-right" id="submit">上传</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle collapseThree" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                <h5>Result信息</h5>
+              </a>
+            </div>
+            <div id="collapseThree" class="accordion-body collapse">
+              <div class="accordion-inner">
+                <div class="result-detail">
+                    <div class="result-panel">
+                        <span class="label label-success">图片路径:</span>
+                        <p class="panel-content"><a target="blank" class="result-url btn btn-link"></a></p>
+                    </div>
+                    <div class="result-panel">
+                        <span class="label label-success">Hash:</span>
+                        <p class="result-hash panel-content"></p>
+                    </div>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+</div>
+<script type="text/javascript" src="lib/jquery.min.js"></script>
+<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="image.js"></script>
+</body>
+
+</html>
