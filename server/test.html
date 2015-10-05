@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="aaa"
+ enctype="multipart/form-data">
+  <input name="key" type="hidden" value="1223">
+  <!-- <input name="x:<custom_name>" type="hidden" value="<custom_value>"> -->
+  <input name="token" type="hidden" value="a4UIWOIX6L49ohUM9KHetcFndgZGodOhgFTTHUm2:2kajdIFAz3QAWp4EPwUcr5YGUZs=:eyJzY29wZSI6InRlbm55IiwiZGVhZGxpbmUiOjE0MDg1MzA0Nzd9">
+  <input name="file" id="file" type="file" onchange="changeImage(this)"/>
+  <input type="submit" value="submit"/>
+</form>
+<script type="text/javascript">
+    function changeImage(image){
+        console.log(image.files);
+    }
+</script>
+</body>
+</html>
