@@ -2,8 +2,9 @@
     var src = document.location.hash.replace('#','');
     var originName = getImageName(src);
     var imageType = getImageType(src);
+    var pathPrefix = localStorage.getItem('pathPrefix');
     $('#fileName').attr('value', originName);
-    $('.pre-name').text(originName + imageType);
+    $('.pre-name').text(pathPrefix + originName + imageType);
     $('.image-info').attr('src', src);
 
     if (localStorage.getItem('accessKey')) {
@@ -12,6 +13,7 @@
         $('#secretKey_value').text(localStorage.getItem('secretKey'));
         $('#spaceName_value').text(localStorage.getItem('spaceName'));
         $('#domainName_value').text(localStorage.getItem('domainName'));
+        $('#pathPrefix_value').text(localStorage.getItem('pathPrefix'));
         $('#serverUrl_value').text(localStorage.getItem('serverUrl'));
     } else {
         $('.collapseOne').click();
@@ -20,6 +22,7 @@
         $('#secretKey_value').text(text);
         $('#spaceName_value').text(text);
         $('#domainName_value').text(text);
+        $('#pathPrefix_value').text("img/");
         url = 'http://lvming6816077.sinaapp.com/qiniu-server/test.php';
         $('#serverUrl_value').text(url);
     }
@@ -34,22 +37,22 @@
         $(this).prev('p').text($(this).val()).show();
     });
     $('#fileName').keyup(function(){
-        if (imageType) {
-            var str = $(this).val();
-            $('.pre-name').text(str + imageType);
-        }
+        var str = $(this).val();
+        $('.pre-name').text(pathPrefix + str + imageType);
     });
     $('#save_token').click(function(){
         var accessKey = $('#accessKey_value').text();
         var secretKey = $('#secretKey_value').text();
         var spaceName = $('#spaceName_value').text();
         var domainName = $('#domainName_value').text();
+        var pathPrefix = $('#pathPrefix_value').text();
         var serverUrl = $('#serverUrl_value').text();
         localStorage.setItem('accessKey',accessKey);
         localStorage.setItem('secretKey',secretKey);
         localStorage.setItem('spaceName',spaceName);
         localStorage.setItem('domainName',domainName);
         localStorage.setItem('serverUrl',serverUrl);
+        localStorage.setItem('pathPrefix',pathPrefix);
         alert('设置成功');
         $('.collapseTwo').click();
     });
@@ -62,7 +65,7 @@
         if (accessKey && secretKey && spaceName && fileName) {
             var type = getImageType(src);
             if (type) {
-                fileName += type;
+                fileName = pathPrefix + fileName + type;
             } else {
                 alert('图片URL有误');
             }
@@ -99,7 +102,7 @@
         if (match && match.length != 0) {
             return match[1];
         } else {
-            return false;
+            return "";
         }
     }
     function getImageType(url){
@@ -108,7 +111,7 @@
         if (match && match.length != 0) {
             return match[0];
         } else {
-            return false;
+            return "";
         }
     }
 })();
